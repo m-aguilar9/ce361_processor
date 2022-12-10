@@ -1,0 +1,44 @@
+parameter [5:0]         A = 6'b100 000		// add
+			B = 6'b100 010		// sub
+			C = 6'b100 100		// and
+			D = 6'b100 110		// xor
+			E = 6'b100 101		// or
+			F = 6'b000 010		// srl
+			G = 6'b000 000		// sll
+			H = 6'b101010		// slt
+			I = 6'b101011		// sltu
+
+module myand(a, b, out);
+	input a;
+	input b;
+	wire temp;
+	output out;
+
+	and_gate ma1 (.x(a), .y(b), .z(temp));
+	assign out = temp;
+endmodule
+
+module myor(a, b, out);
+	input a;
+	input b;
+	wire temp;
+	output out;
+
+	or_gate mo1 (.x(a), .y(b), .z(temp));
+	assign out = temp;
+endmodule
+
+module myxor(a, b, out);
+	input a;
+	input b;
+	wire temp;
+	output out;
+
+	xor_gate mx1 (.x(a), .y(b), .z(temp));
+	assign out = temp;
+endmodule 
+
+
+// orange -> wire not connected ie no current flowing
+// yellow -> wrong connection
+// red -> in ports list not connected

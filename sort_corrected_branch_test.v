@@ -4,19 +4,23 @@ module sort_corrected_branch_test();
 	reg clk;
 	cpu cpu1(clk);
 
-	// get data from data files
-	defparam cpu1.imem(instance in processor).sram1.mem_file = "data/unsigned_sum.dat";
-	defparam cpu1.dmem(instance in processor).syncram1.mem_file= "data/unsigned_sum.dat";
+	defparam cpu1.imem.sram1.mem_file = "data/sort_corrected_branch.dat";
+	defparam cpu1.dp1.data_mem.syncram1.mem_file = "data/sort_corrected_branch.dat";
+
 
 	// run the test with time = 10ns
 	initial begin
-		clk = 1'b1;
-		#10 $finish;
+
+		#1000 $finish;
 	end
 
 	// making the clock: it starts on 0
 	always begin
-		#1 clk = ~clk;
+		clk = 1'b1;
+		#1;
+		clk = 1'b0;
+		#1;
 	end
+
 
 endmodule
